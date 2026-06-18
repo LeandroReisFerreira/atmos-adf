@@ -24,6 +24,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().file_name",
+					"type": "Expression"
+				},
 				"folderPath": {
 					"value": "@concat(\n'landing/visualcrossing/',\ndataset().city,\n'/year=', formatDateTime(dataset().date, 'yyyy'),\n'/month=', formatDateTime(dataset().date, 'MM'),\n'/day=', formatDateTime(dataset().date, 'dd')\n)",
 					"type": "Expression"
