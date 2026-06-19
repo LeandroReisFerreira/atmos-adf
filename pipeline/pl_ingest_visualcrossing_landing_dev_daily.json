@@ -69,7 +69,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"city": {
-								"value": "@variables('city')",
+								"value": "@pipeline().parameters.city",
 								"type": "Expression"
 							},
 							"date": {
@@ -107,6 +107,7 @@
 			},
 			{
 				"name": "current_date",
+				"description": "@utcnow('yyyy-MM-dd')",
 				"type": "SetVariable",
 				"dependsOn": [
 					{
@@ -132,9 +133,6 @@
 		],
 		"parameters": {
 			"city": {
-				"type": "string"
-			},
-			"date": {
 				"type": "string"
 			}
 		},
