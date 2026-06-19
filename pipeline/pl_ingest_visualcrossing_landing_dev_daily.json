@@ -69,11 +69,11 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"city": {
-								"value": "@pipeline().parameters.city",
+								"value": "@variables('date')",
 								"type": "Expression"
 							},
 							"date": {
-								"value": "@pipeline().parameters.date",
+								"value": "@variables('date')",
 								"type": "Expression"
 							},
 							"file_name": {
