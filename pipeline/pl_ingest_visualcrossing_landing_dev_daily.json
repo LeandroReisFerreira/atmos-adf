@@ -9,7 +9,7 @@
 					{
 						"activity": "current_date",
 						"dependencyConditions": [
-							"Succeeded"
+							"Completed"
 						]
 					}
 				],
@@ -107,7 +107,6 @@
 			},
 			{
 				"name": "current_date",
-				"description": "",
 				"type": "SetVariable",
 				"dependsOn": [
 					{
@@ -138,6 +137,9 @@
 		},
 		"variables": {
 			"city": {
+				"type": "String"
+			},
+			"date": {
 				"type": "String"
 			}
 		},
