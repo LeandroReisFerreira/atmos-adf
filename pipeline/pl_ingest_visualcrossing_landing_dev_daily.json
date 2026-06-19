@@ -1,5 +1,5 @@
 {
-	"name": "pl_ingest_visualcrossing_landing_dev",
+	"name": "pl_ingest_visualcrossing_landing_dev_daily",
 	"properties": {
 		"activities": [
 			{
@@ -7,9 +7,9 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "web_get_apikey",
+						"activity": "current_date",
 						"dependencyConditions": [
-							"Completed"
+							"Succeeded"
 						]
 					}
 				],
@@ -49,11 +49,11 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"city": {
-								"value": "@pipeline().parameters.city",
+								"value": "@variables('date')",
 								"type": "Expression"
 							},
 							"date": {
-								"value": "@pipeline().parameters.date",
+								"value": "@variables('date')",
 								"type": "Expression"
 							},
 							"apiKey": {
@@ -104,14 +104,38 @@
 						"resource": "https://vault.azure.net/"
 					}
 				}
+			},
+			{
+				"name": "current_date",
+				"description": "@utcnow('yyyy-MM-dd')",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "web_get_apikey",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "date",
+					"value": "@utcnow('yyyy-MM-dd')"
+				}
 			}
 		],
 		"parameters": {
 			"city": {
 				"type": "string"
-			},
+			}
+		},
+		"variables": {
 			"date": {
-				"type": "string"
+				"type": "String"
 			}
 		},
 		"folder": {
