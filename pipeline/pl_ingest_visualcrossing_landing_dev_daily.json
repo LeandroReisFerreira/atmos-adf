@@ -107,7 +107,7 @@
 			},
 			{
 				"name": "current_date",
-				"description": "@utcnow('yyyy-MM-dd')",
+				"description": "",
 				"type": "SetVariable",
 				"dependsOn": [
 					{
@@ -137,7 +137,7 @@
 			}
 		},
 		"variables": {
-			"date": {
+			"city": {
 				"type": "String"
 			}
 		},
