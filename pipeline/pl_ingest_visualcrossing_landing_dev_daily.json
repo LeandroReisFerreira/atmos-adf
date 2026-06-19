@@ -24,6 +24,11 @@
 				"typeProperties": {
 					"source": {
 						"type": "JsonSource",
+						"additionalColumns": [
+							{
+								"value": "$$FILEPATH"
+							}
+						],
 						"storeSettings": {
 							"type": "HttpReadSettings",
 							"requestMethod": "GET"
@@ -49,7 +54,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"city": {
-								"value": "@variables('date')",
+								"value": "@variables('city')",
 								"type": "Expression"
 							},
 							"date": {
@@ -69,7 +74,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"city": {
-								"value": "@variables('date')",
+								"value": "@variables('city')",
 								"type": "Expression"
 							},
 							"date": {
@@ -98,7 +103,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"method": "GET",
-					"url": "https://kvatmosdevwestus2001lrf.vault.azure.net/secrets/visualcrossing-api-key-dev/e1e3dc57e93d407fb406b77247742d8e?api-version=2025-07-01",
+					"url": "https://kvatmosdevwestus2001lrf.vault.azure.net/secrets/visualcrossing-api-key-dev/e1e3dc57e93d407fb406b77247742d8e?api-version=2025-07-01/",
 					"authentication": {
 						"type": "MSI",
 						"resource": "https://vault.azure.net/"
