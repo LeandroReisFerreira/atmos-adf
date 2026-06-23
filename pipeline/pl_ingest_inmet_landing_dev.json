@@ -50,6 +50,8 @@
 			{
 				"name": "foreach_ano",
 				"type": "ForEach",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "set_year_list",
