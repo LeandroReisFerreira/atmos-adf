@@ -169,15 +169,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "DelimitedTextSource",
-						"storeSettings": {
-							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
-						}
+						"type": "GoogleBigQueryV2Source"
 					},
 					"sink": {
 						"type": "DelimitedTextSink",
@@ -202,7 +194,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ds_csv_estacao_landing",
+						"referenceName": "ds_bigquery_inmet_src_dev",
 						"type": "DatasetReference",
 						"parameters": {
 							"id_estacao": {
