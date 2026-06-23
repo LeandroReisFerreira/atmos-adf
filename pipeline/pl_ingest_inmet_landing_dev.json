@@ -194,7 +194,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ds_bigquery_inmet_src_dev",
+						"referenceName": "ds_bigquery_estacoes_src_dev",
 						"type": "DatasetReference",
 						"parameters": {
 							"id_estacao": {
