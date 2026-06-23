@@ -169,7 +169,11 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "GoogleBigQueryV2Source"
+						"type": "GoogleBigQueryV2Source",
+						"query": {
+							"value": "@concat(\n    'SELECT * FROM `basedosdados.br_inmet_bdmep.estacao` WHERE id_estacao = ''',\n    pipeline().parameters.id_estacao,\n    ''''\n)",
+							"type": "Expression"
+						}
 					},
 					"sink": {
 						"type": "DelimitedTextSink",
