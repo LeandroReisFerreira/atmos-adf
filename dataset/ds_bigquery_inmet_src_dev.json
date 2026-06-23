@@ -11,6 +11,9 @@
 			},
 			"ano": {
 				"type": "string"
+			},
+			"nome_tabela": {
+				"type": "string"
 			}
 		},
 		"folder": {
@@ -18,6 +21,13 @@
 		},
 		"annotations": [],
 		"type": "GoogleBigQueryV2Object",
-		"schema": []
+		"schema": [],
+		"typeProperties": {
+			"dataset": {
+				"value": "@dataset().nome_tabela",
+				"type": "Expression"
+			},
+			"table": ""
+		}
 	}
 }
