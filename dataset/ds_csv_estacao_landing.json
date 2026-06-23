@@ -19,11 +19,11 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": {
-					"value": "landing/inmet/metadata/estacao_@{dataset().id_estacao}.csv",
+					"value": "estacao_@{dataset().id_estacao}.csv",
 					"type": "Expression"
 				},
 				"folderPath": {
-					"value": "landing/inmet/metadata/estacao_@{dataset().id_estacao}.csv",
+					"value": "landing/inmet/metadata",
 					"type": "Expression"
 				},
 				"fileSystem": "atmos-landing-dev-001"
