@@ -50,8 +50,6 @@
 			{
 				"name": "foreach_ano",
 				"type": "ForEach",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "set_year_list",
@@ -84,7 +82,7 @@
 								"source": {
 									"type": "GoogleBigQueryV2Source",
 									"query": {
-										"value": "@concat(\n    'SELECT * FROM `basedosdados.br_inmet_bdmep.microdados` WHERE id_estacao = ''', \n    pipeline().parameters.id_estacao, \n    ''' AND ano = ''', \n    string(item()), \n    ''''\n)\n",
+										"value": "@concat(\n    'SELECT * FROM `basedosdados.br_inmet_bdmep.microdados`\nWHERE id_estacao = ''',pipeline().parameters.id_estacao,'''\n    AND ano = ',string(item()))\n",
 										"type": "Expression"
 									}
 								},
@@ -135,7 +133,7 @@
 											"type": "Expression"
 										},
 										"file_name": {
-											"value": "@toLower(concat('atmos_', pipeline().parameters.id_estacao, '_',\n    string(item()),formatDateTime(utcNow(), 'yyyyMMddHHmmss'), '.\n    csv'))",
+											"value": "@toLower(concat('atmos_', pipeline().parameters.id_estacao, '_', formatDateTime(utcNow(), 'yyyyMMddHHmmss'), '.csv'))",
 											"type": "Expression"
 										}
 									}
