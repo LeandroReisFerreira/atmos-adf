@@ -29,7 +29,7 @@
 					"type": "Expression"
 				},
 				"folderPath": {
-					"value": "@toLower(\n    concat('atmos_', pipeline().parameters.id_estacao, '_', string(item()), '.csv'))",
+					"value": "@toLower(\n    concat('landing/inmet/ano=',\n    dataset().ano))",
 					"type": "Expression"
 				},
 				"fileSystem": "atmos-landing-dev-001"
