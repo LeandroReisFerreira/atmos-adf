@@ -1,0 +1,31 @@
+{
+	"name": "ds_bigquery_estacoes_src_dev",
+	"properties": {
+		"description": "big query para a tabela estacoes",
+		"linkedServiceName": {
+			"referenceName": "ls_bigquery_inmet_dev",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"id_estacao": {
+				"type": "string"
+			},
+			"nome_tabela": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "INMET"
+		},
+		"annotations": [],
+		"type": "GoogleBigQueryV2Object",
+		"schema": [],
+		"typeProperties": {
+			"dataset": {
+				"value": "@dataset().nome_tabela",
+				"type": "Expression"
+			},
+			"table": ""
+		}
+	}
+}
