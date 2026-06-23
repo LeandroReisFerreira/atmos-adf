@@ -20,10 +20,6 @@
 		"type": "GoogleBigQueryV2Object",
 		"schema": [],
 		"typeProperties": {
-			"dataset": {
-				"value": "@dataset().nome_tabela",
-				"type": "Expression"
-			},
 			"table": ""
 		}
 	}
