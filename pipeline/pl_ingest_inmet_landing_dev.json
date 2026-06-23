@@ -150,10 +150,10 @@
 			"id_estacao": {
 				"type": "string"
 			},
-			"endYear": {
+			"startYear": {
 				"type": "int"
 			},
-			"startYear": {
+			"endYear": {
 				"type": "int"
 			}
 		},
