@@ -52,7 +52,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "set_year_list",
+						"activity": "copy_estacao_to_landing",
 						"dependencyConditions": [
 							"Completed"
 						]
@@ -128,16 +128,16 @@
 									"referenceName": "ds_csv_inmet_landing_dev",
 									"type": "DatasetReference",
 									"parameters": {
+										"id_estacao": {
+											"value": "@pipeline().parameters.id_estacao",
+											"type": "Expression"
+										},
 										"ano": {
 											"value": "@item()",
 											"type": "Expression"
 										},
 										"file_name": {
-											"value": "@toLower(concat('atmos_', pipeline().parameters.id_estacao, '_',string(item()), '_',formatDateTime(utcNow(), 'yyyyMMddHHmmss'), '.csv'))",
-											"type": "Expression"
-										},
-										"id_estacao": {
-											"value": "@pipeline().parameters.id_estacao",
+											"value": "@toLower(concat('atmos_',pipeline().parameters.id_estacao, '_',formatDateTime(utcNow(), 'yyyyMMddHHmmss'), '.csv'))",
 											"type": "Expression"
 										}
 									}
@@ -146,6 +146,80 @@
 						}
 					]
 				}
+			},
+			{
+				"name": "copy_estacao_to_landing",
+				"description": "essa copy irá enviar a pasta estacao para a landing",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "set_year_list",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "GoogleBigQueryV2Source",
+						"query": {
+							"value": "@concat(\n    'SELECT * FROM `basedosdados.br_inmet_bdmep.estacao` WHERE id_estacao = ''',\n    pipeline().parameters.id_estacao,\n    ''''\n)",
+							"type": "Expression"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_bigquery_estacoes_src_dev",
+						"type": "DatasetReference",
+						"parameters": {
+							"id_estacao": {
+								"value": "@pipeline().parameters.id_estacao",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_csv_estacao_landing",
+						"type": "DatasetReference",
+						"parameters": {
+							"id_estacao": {
+								"value": "@pipeline().parameters.id_estacao",
+								"type": "Expression"
+							}
+						}
+					}
+				]
 			}
 		],
 		"parameters": {

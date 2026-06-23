@@ -1,15 +1,13 @@
 {
-	"name": "ds_bigquery_inmet_src_dev",
+	"name": "ds_bigquery_estacoes_src_dev",
 	"properties": {
+		"description": "big query para a tabela estacoes",
 		"linkedServiceName": {
 			"referenceName": "ls_bigquery_inmet_dev",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
 			"id_estacao": {
-				"type": "string"
-			},
-			"ano": {
 				"type": "string"
 			}
 		},

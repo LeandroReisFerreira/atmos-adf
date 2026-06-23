@@ -1,5 +1,5 @@
 {
-	"name": "ds_csv_inmet_landing_dev",
+	"name": "ds_csv_estacao_landing",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_adlsg2_atmos_dev",
@@ -7,12 +7,6 @@
 		},
 		"parameters": {
 			"id_estacao": {
-				"type": "string"
-			},
-			"ano": {
-				"type": "string"
-			},
-			"file_name": {
 				"type": "string"
 			}
 		},
@@ -25,11 +19,11 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": {
-					"value": "@dataset().file_name",
+					"value": "estacao_@{dataset().id_estacao}.csv",
 					"type": "Expression"
 				},
 				"folderPath": {
-					"value": "@toLower(\n    concat('landing/inmet/ano=',\n    dataset().ano))",
+					"value": "landing/inmet/estacao",
 					"type": "Expression"
 				},
 				"fileSystem": "atmos-landing-dev-001"
