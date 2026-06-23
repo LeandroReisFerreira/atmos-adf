@@ -11,9 +11,6 @@
 			},
 			"ano": {
 				"type": "string"
-			},
-			"nome_tabela": {
-				"type": "string"
 			}
 		},
 		"folder": {
