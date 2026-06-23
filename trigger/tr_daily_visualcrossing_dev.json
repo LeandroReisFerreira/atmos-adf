@@ -1,0 +1,33 @@
+{
+	"name": "tr_daily_visualcrossing_dev",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pl_ingest_visualcrossing_landing_dev_daily",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"city": "Sorocaba"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2026-06-21T21:00:00",
+				"endTime": "2026-06-30T21:00:00",
+				"timeZone": "E. South America Standard Time",
+				"schedule": {
+					"hours": [
+						7
+					]
+				}
+			}
+		}
+	}
+}
