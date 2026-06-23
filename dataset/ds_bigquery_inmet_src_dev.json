@@ -8,6 +8,9 @@
 		"parameters": {
 			"id_estacao": {
 				"type": "string"
+			},
+			"ano": {
+				"type": "int"
 			}
 		},
 		"folder": {
